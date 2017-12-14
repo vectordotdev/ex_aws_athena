@@ -5,7 +5,7 @@ defmodule ExAws.Athena do
   http://docs.aws.amazon.com/athena/latest/APIReference/API_Operations.html
   """
 
-  import ExAws.Utils, only: [camelize_keys: 1, random_string: 1]
+  import ExAws.Utils, only: [camelize_keys: 1]
 
   require Logger
 
@@ -84,4 +84,10 @@ defmodule ExAws.Athena do
     } |> Map.merge(opts))
   end
 
+  defp random_string(length) do
+    length
+    |> :crypto.strong_rand_bytes()
+    |> Base.encode64()
+    |> binary_part(0, length)
+  end
 end
