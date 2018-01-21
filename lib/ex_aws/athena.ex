@@ -40,11 +40,13 @@ defmodule ExAws.Athena do
   end
 
   def start_query_execution(query_string, result_output_location, opts \\ []) do
+    client_request_token = Keyword.get_lazy(opts, :client_request_token, fn -> random_string(64) end)
+
     data =
       opts
       |> normalize_opts()
       |> Map.merge(%{
-        "ClientRequestToken" => random_string(64),
+        "ClientRequestToken" => client_request_token,
         "QueryString" => query_string,
         "ResultConfiguration" => %{
           "OutputLocation" => result_output_location
