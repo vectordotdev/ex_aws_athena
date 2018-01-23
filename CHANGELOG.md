@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+
+  - Added `stop_query_execution/1` to stop Athena queries.
+
 ### Changed
 
   - Added the `:client_request_token` option to `start_query_execution/3`.

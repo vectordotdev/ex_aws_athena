@@ -56,6 +56,12 @@ defmodule ExAws.Athena do
     request(:start_query_execution, data)
   end
 
+  @spec stop_query_execution(query_execution_id) :: ExAws.Operation.JSON.t
+  def stop_query_execution(query_execution_id) do
+    data = %{"QueryExecutionId" => query_execution_id}
+    request(:stop_query_execution, data)
+  end
+
   defp normalize_opts(opts) do
     opts
     |> Map.new()
